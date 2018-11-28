@@ -19,6 +19,6 @@ nav ul li {
   padding: 8px;
   font-size: 1.4rem;
   position: absolute;
-  top:-50px;
-  right: -50px
+  top:-100px;
+  left: 200px
 }
