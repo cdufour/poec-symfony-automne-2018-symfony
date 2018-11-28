@@ -16,3 +16,7 @@ le nombre de rectangles correspondants
 si le nombre de rectangles fourni est supérieur à 10
 Afficher => "Impossible de traiter la demande..."
 Sinon afficher le nombre de rectangles indiqué
+
+********************************
+Permettre la suppression d'un pays
+********************************

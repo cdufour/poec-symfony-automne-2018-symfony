@@ -28,8 +28,9 @@ class Country
      */
     private $proverbs;
 
-    public function __construct()
+    public function __construct($name)
     {
+        $this->name = $name;
         $this->proverbs = new ArrayCollection();
     }
 
