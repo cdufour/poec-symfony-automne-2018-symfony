@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} modification d'une couleur {% endblock %}
+
+{% block body %}
+<h1>Modification d'un couleur</h1>
+
+{% if method == 'POST' %}
+<section>
+  {% if success %}
+    Couleur modifiée !
+  {% else %}
+    Couleur non modifiée, désolé...
+  {% endif %}
+</section>
+{% endif %}
+
+<form method="post">
+  <input type="text" value="{{color.nameEn}}"
+    name="nameEn" placeholder="Nom en anglais">
+  <input type="text" value="{{color.nameFr}}"
+    name="nameFr" placeholder="Nom en français">
+  <input type="text" value="{{color.hexa}}"
+    name="hexa" placeholder="Couleur en hexadécimal">
+  <button>Mettre à jour</button>
+</form>
+{% endblock %}

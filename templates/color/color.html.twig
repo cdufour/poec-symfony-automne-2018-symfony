@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Color</title>
+    <style>
+      .rectangle {
+        width: {{width}}px;
+        height: {{height}}px;
+        background-color: {{color}};
+        margin-bottom: 20px
+      }
+    </style>
+  </head>
+  <body>
+    couleur: {{ color }}
+
+    {% if nb > 10 %}
+      <p>Ma sei matto ?</p>
+    {% else %}
+
+      {% for i in 1..nb %}
+        <div class="rectangle">{{i}}</div>
+      {% endfor %}
+
+    {% endif %}
+  </body>
+</html>

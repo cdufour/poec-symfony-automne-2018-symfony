@@ -1,0 +1,31 @@
+index:
+   path: /
+   controller: App\Controller\ColorController::list
+
+players:
+  path: /players
+  controller: App\Controller\DemoController::players
+
+test:
+  path: /test
+  controller: App\Controller\DemoController::test
+
+color:
+  path: /color/{color}/{width}/{height}/{nb}
+  controller: App\Controller\ColorController::color
+
+color_add:
+  path: /color/add
+  controller: App\Controller\ColorController::add
+
+color_list:
+  path: /color/list
+  controller: App\Controller\ColorController::list
+
+color_edit:
+  path: /color/{id}/edit
+  controller: App\Controller\ColorController::edit
+
+color_delete:
+  path: /color/{id}/delete
+  controller: App\Controller\ColorController::delete
