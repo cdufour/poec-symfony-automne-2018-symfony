@@ -10,7 +10,7 @@
     <tr>
       <td>{{ country.name }}</td>
       <td>
-        <a href="/country/{{country.id}}/delete">supprimer</a>
+        <a href="{{path('country_delete', {'id':country.id})}}">supprimer</a>
       </td>
     </tr>
   {% endfor %}

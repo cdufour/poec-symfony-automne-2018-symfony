@@ -6,6 +6,7 @@ de fond le nom de couleur passé dans l'url
 exemple: /color/red => affiche un carré rouge
 exemple: /color/orange => affiche un carré orange
 
+
 ****************************************************
 Ajouter un quatrième argument dans la route /color
 permettant d'indiquer le nombre de rectangles à générer
@@ -17,6 +18,11 @@ si le nombre de rectangles fourni est supérieur à 10
 Afficher => "Impossible de traiter la demande..."
 Sinon afficher le nombre de rectangles indiqué
 
+
 ********************************
 Permettre la suppression d'un pays
 ********************************
+
+
+Afficher la liste des sujets par ordre alphabétique
+à la route /topic

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <a class="btn btn-primary"
+    href="{{path('topic_add')}}">Ajout d'un thème</a>
+  <table class="table table-bordered table-striped">
+    {% for topic in topics %}
+    <tr>
+      <td>{{topic.name}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}

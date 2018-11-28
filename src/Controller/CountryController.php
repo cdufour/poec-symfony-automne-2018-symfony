@@ -16,7 +16,11 @@ class CountryController extends AbstractController
     {
         $countries = $this->getDoctrine()
           ->getRepository(Country::class)
-          ->findAll();
+          //->findAll();
+          ->findBy([], ['name' => 'ASC']);
+        // findBy permet de paramètrer la recherche
+        // le premier argument (tableau assoc) permet de filtrer
+        // le deuxième argument permet le tri
 
         return $this->render('country/index.html.twig', [
           'countries' => $countries
