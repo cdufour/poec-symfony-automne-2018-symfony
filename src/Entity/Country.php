@@ -33,7 +33,17 @@ class Country
      */
     private $users;
 
-    public function __construct($name)
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $population;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\City", inversedBy="country", cascade={"persist", "remove"})
+     */
+    private $capital;
+
+    public function __construct($name = '')
     {
         $this->name = $name;
         $this->proverbs = new ArrayCollection();
@@ -115,6 +125,30 @@ class Country
                 $user->setCountry(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPopulation(): ?int
+    {
+        return $this->population;
+    }
+
+    public function setPopulation(?int $population): self
+    {
+        $this->population = $population;
+
+        return $this;
+    }
+
+    public function getCapital(): ?City
+    {
+        return $this->capital;
+    }
+
+    public function setCapital(?City $capital): self
+    {
+        $this->capital = $capital;
 
         return $this;
     }

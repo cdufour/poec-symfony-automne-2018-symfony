@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Country;
+use App\Form\CountryType;
 
 class CountryController extends AbstractController
 {
@@ -44,6 +45,33 @@ class CountryController extends AbstractController
     }
 
     /**
+     * @Route("/country/new", name="country_new")
+     */
+    public function new(Request $request)
+    {
+      $country = new Country();
+      $form = $this->createForm(CountryType::class, $country);
+
+      // On connecte le formulaire avec la requête
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted()) {
+        // on hydrate l'objet topic avec les données
+        // envoyées/postées par le formulaire
+        $country = $form->getData();
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($country);
+        $em->flush();
+        return $this->redirectToRoute('country');
+      }
+
+      return $this->render('country/new.html.twig', [
+        'form' => $form->createView()
+      ]);
+    }
+
+    /**
      * @Route("/country/{id}/delete", name="country_delete")
      */
     public function delete($id)
@@ -55,5 +83,23 @@ class CountryController extends AbstractController
         $em->remove($country);
         $em->flush();
         return $this->redirectToRoute('country');
+    }
+
+    /**
+     * @Route("/country/test", name="country_test")
+     */
+    public function test()
+    {
+      $countries = $this->getDoctrine()
+        ->getRepository(Country::class)
+        //->findByPopNumber(50000000)
+        //->findAllCustom()
+        //->findbySearch('gal')
+        ->findAllRaw()
+      ;
+
+      return $this->render('country/test.html.twig', [
+        'countries' => $countries
+      ]);
     }
 }

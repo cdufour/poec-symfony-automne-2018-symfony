@@ -3,12 +3,17 @@
 {% block body %}
 
 <a class="btn btn-primary"
-  href="/country/add">Ajouter un pays</a>
+  href="{{path('country_new')}}">Ajouter un pays</a>
 
 <table class="table table-striped table-bordered">
   {% for country in countries %}
     <tr>
-      <td>{{ country.name }}</td>
+      <td>
+        {{ country.name }}
+        {% if country.capital %}
+          ({{ country.capital.name }})
+        {% endif %}
+      </td>
       <td>
         <a href="{{path('country_delete', {'id':country.id})}}">supprimer</a>
       </td>

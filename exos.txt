@@ -40,9 +40,14 @@ Un utilisateur sera lié à un pays et à un rôle
 Un même rôle et un même pays seront liés à plusieurs utilisateurs
 (Plusieurs utilisateurs peuvent être lié à un pays,
 Plusieurs utilisateurs peuvent être lié à un role)
+********************************
 
+Ajouter à l'entité Country les propriétés suivantes:
+- capital (relation avec une entity City)
+- population (integer)
 
-
+Modifier (ou créer) en conséquence le formulaire d'ajout
+d'un pays
 
 
 ####

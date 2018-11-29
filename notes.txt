@@ -1,0 +1,11 @@
+3 approches pour la création de méthodes personnalisées
+-a) queryBuilder
+-b) DQL (Doctrine Query Language)
+
+-c) SQL pur
+
+a) et b) renvoient des objets (déjà hydratées)
+c) renvoie des lignes SQL  qui peuvent être soit:
+- soit objets sql génériques n'ayant ni getter/setter,
+ni intervention de Symfony
+- soit tableaux associtiafs
