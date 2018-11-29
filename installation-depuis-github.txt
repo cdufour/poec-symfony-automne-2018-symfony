@@ -1,0 +1,18 @@
+*** Installation depuis de github ***
+
+1. Vérifier que Git est installé
+2. Cloner le projet:
+  - se placer sur le Desktop (par exemple)
+  - git clone https://github.com/cdufour/poec-symfony-automne-2018-symfony.git
+  - se placer dans le dossier cloné:
+    cd poec-symfony-automne-2018-symfony
+3. Télécharger les dépendances du projet:
+  composer install
+4. Dans phpmyadmin, supprimer la base de données intro
+5. Ajouter à la racine du projet un fichier .env avec les lignes suivantes:
+  APP_ENV=dev
+  DATABASE_URL=mysql://root@127.0.0.1:3306/intro
+6. Récréer la base de données intro:
+  php bin/console doctrine:database:create
+7. Exécuter les migrations pour recontituer la base:
+  php bin/console doctrine:migrations:migrate

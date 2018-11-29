@@ -18,7 +18,7 @@ class ProverbController extends AbstractController
       $proverbs = $this->getDoctrine()
         ->getRepository(Proverb::class)
         ->findAll();
-
+        
       return $this->render('proverb/index.html.twig', [
           'proverbs' => $proverbs
       ]);
