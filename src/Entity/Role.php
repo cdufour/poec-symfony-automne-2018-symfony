@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\CountryRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\RoleRepository")
  */
-class Country
+class Role
 {
     /**
      * @ORM\Id()
@@ -24,19 +24,12 @@ class Country
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Proverb", mappedBy="country")
-     */
-    private $proverbs;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="country")
+     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="role")
      */
     private $users;
 
-    public function __construct($name)
+    public function __construct()
     {
-        $this->name = $name;
-        $this->proverbs = new ArrayCollection();
         $this->users = new ArrayCollection();
     }
 
@@ -58,37 +51,6 @@ class Country
     }
 
     /**
-     * @return Collection|Proverb[]
-     */
-    public function getProverbs(): Collection
-    {
-        return $this->proverbs;
-    }
-
-    public function addProverb(Proverb $proverb): self
-    {
-        if (!$this->proverbs->contains($proverb)) {
-            $this->proverbs[] = $proverb;
-            $proverb->setCountry($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProverb(Proverb $proverb): self
-    {
-        if ($this->proverbs->contains($proverb)) {
-            $this->proverbs->removeElement($proverb);
-            // set the owning side to null (unless already changed)
-            if ($proverb->getCountry() === $this) {
-                $proverb->setCountry(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|User[]
      */
     public function getUsers(): Collection
@@ -100,7 +62,7 @@ class Country
     {
         if (!$this->users->contains($user)) {
             $this->users[] = $user;
-            $user->setCountry($this);
+            $user->setRole($this);
         }
 
         return $this;
@@ -111,8 +73,8 @@ class Country
         if ($this->users->contains($user)) {
             $this->users->removeElement($user);
             // set the owning side to null (unless already changed)
-            if ($user->getCountry() === $this) {
-                $user->setCountry(null);
+            if ($user->getRole() === $this) {
+                $user->setRole(null);
             }
         }
 
