@@ -1,0 +1,36 @@
+*** Symfony 4: TP Quizz ***
+
+Créer une application web permettant de générer des quizz.
+
+L'application aura trois entités:
+Question
+  label
+  category
+  difficulty
+
+Answer
+  question
+  correct
+
+Category
+  name
+
+Prévoir les routes suivantes:
+/question => affichera les liste des questions enregistrées
+/question/{id} => affichera la question identifiée ainsi que les réponses associées
+/question/{category} => affichera les questions pour la catégorie passée dans l'url
+/question/{difficulty} => affichera les questions pour le niveau de difficulté passée dans l'url
+
+/question/add
+/question/edit/{id}
+/question/delete/{id}
+
+/answer
+/answer/add
+/answer/edit/{id}
+/answser/delete/{id}
+
+/category
+/category/add
+/answer/edit/{id}
+/answser/delete/{id}

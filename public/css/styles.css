@@ -22,3 +22,23 @@ nav ul li {
   top:-100px;
   left: 200px
 }
+
+.proverb {
+  background-color: #ddd;
+  padding:20px;
+  border-radius: 6px;
+  margin: 20px auto;
+  font-size: 1.2rem;
+  width: 50%
+}
+.proverb header {
+  font-size: .75rem;
+  text-align: right;
+  text-transform: uppercase;
+  padding-bottom: 10px
+}
+.proverb footer {
+  font-size: .7rem;
+  color: #999;
+  padding-top: 10px
+}

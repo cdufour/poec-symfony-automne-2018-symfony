@@ -15,7 +15,8 @@
         {% endif %}
       </td>
       <td>
-        <a href="{{path('country_delete', {'id':country.id})}}">supprimer</a>
+        <a href="{{path('country_edit', {'id':country.id})}}">Modifier</a>
+        <a href="{{path('country_delete', {'id':country.id})}}">Supprimer</a>
       </td>
     </tr>
   {% endfor %}

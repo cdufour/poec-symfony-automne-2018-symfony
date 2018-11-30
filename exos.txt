@@ -40,8 +40,8 @@ Un utilisateur sera lié à un pays et à un rôle
 Un même rôle et un même pays seront liés à plusieurs utilisateurs
 (Plusieurs utilisateurs peuvent être lié à un pays,
 Plusieurs utilisateurs peuvent être lié à un role)
-********************************
 
+********************************
 Ajouter à l'entité Country les propriétés suivantes:
 - capital (relation avec une entity City)
 - population (integer)
@@ -49,5 +49,18 @@ Ajouter à l'entité Country les propriétés suivantes:
 Modifier (ou créer) en conséquence le formulaire d'ajout
 d'un pays
 
+********************************
+Modifier l'apparence de la page /proverb en vous
+inspirant de cette page:
+http://citation-celebre.leparisien.fr/proverbe
 
-####
+Ajouter une propriété adjective à l'entité Country
+Afin de pouvoir afficher, par exemple:
+  "Proverbe français, chinois, etc..."
+
+
+
+
+
+
+###############################################

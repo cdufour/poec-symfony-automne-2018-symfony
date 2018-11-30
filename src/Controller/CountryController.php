@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use App\Entity\Country;
 use App\Form\CountryType;
 
@@ -49,6 +50,7 @@ class CountryController extends AbstractController
      */
     public function new(Request $request)
     {
+      $file = '';
       $country = new Country();
       $form = $this->createForm(CountryType::class, $country);
 
@@ -60,13 +62,56 @@ class CountryController extends AbstractController
         // envoyées/postées par le formulaire
         $country = $form->getData();
 
+        // traitement du fichier uploaded
+        $file = $form->get('flag')->getData();
+        $fileName = $file->getClientOriginalName();
+
+        try {
+          $file->move(
+            $this->getParameter('flags_folder'),
+            $fileName);
+        } catch(FileException $e) {
+          echo 'error';
+        }
+
+        $country->setFlag($fileName);
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($country);
         $em->flush();
         return $this->redirectToRoute('country');
       }
 
-      return $this->render('country/new.html.twig', [
+      return $this->render('country/form.html.twig', [
+        'form' => $form->createView()
+      ]);
+    }
+
+    /**
+     * @Route("/country/{id}/edit", name="country_edit")
+     */
+    public function edit($id, Request $request)
+    {
+      $em = $this->getDoctrine()->getManager();
+
+      // récupération des données du pays à modifier
+      $country = $em
+        ->getRepository(Country::class)
+        ->find($id);
+
+      $form = $this->createForm(CountryType::class, $country);
+
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted()) {
+        // modifie l'object country
+        // avec les données postées
+        $country = $form->getData();
+        $em->flush();
+        return $this->redirectToRoute('country');
+      }
+
+      return $this->render('country/form.html.twig', [
         'form' => $form->createView()
       ]);
     }

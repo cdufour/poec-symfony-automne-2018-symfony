@@ -5,29 +5,22 @@
  <a class="btn btn-primary"
   href="{{path('proverb_add')}}">Ajouter un proverbe</a>
 
-  <table class="table table-striped table-bordered">
-    <thead>
-      <tr>
-        <th>Texte</th>
-        <th>Pays</th>
-        <th>Thèmes</th>
-        <th>Popularité</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for proverb in proverbs %}
-        <tr>
-          <td>{{proverb.body}}</td>
-          <td>{{proverb.country.name}}</td>
-          <td>
-            {% for topic in proverb.topic %}
-              {{topic.name}},
-            {% endfor %}
-          </td>
-          <td>{{proverb.popularity}}</td>
-        </tr>
+
+  {% for proverb in proverbs %}
+
+  <article class="proverb">
+    <header>
+      {% for topic in proverb.topic %}
+        {{topic.name}}&nbsp;&nbsp;
       {% endfor %}
-    </tbody>
-  </table>
+    </header>
+    {{proverb.body}}
+    <footer>
+      Proverbe {{ proverb.country.adjective }}
+    </footer>
+  </article>
+
+  {% endfor %}
+
 
 {% endblock %}

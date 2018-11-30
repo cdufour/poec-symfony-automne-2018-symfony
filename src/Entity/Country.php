@@ -43,6 +43,16 @@ class Country
      */
     private $capital;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $adjective;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $flag;
+
     public function __construct($name = '')
     {
         $this->name = $name;
@@ -149,6 +159,30 @@ class Country
     public function setCapital(?City $capital): self
     {
         $this->capital = $capital;
+
+        return $this;
+    }
+
+    public function getAdjective(): ?string
+    {
+        return $this->adjective;
+    }
+
+    public function setAdjective(?string $adjective): self
+    {
+        $this->adjective = $adjective;
+
+        return $this;
+    }
+
+    public function getFlag(): ?string
+    {
+        return $this->flag;
+    }
+
+    public function setFlag(?string $flag): self
+    {
+        $this->flag = $flag;
 
         return $this;
     }
