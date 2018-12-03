@@ -9,11 +9,18 @@ Question
   difficulty
 
 Answer
+  label
   question
   correct
 
 Category
   name
+
+A une question correspond une catégorie
+Une catégorie est liée à plusieurs questions
+
+A une réponse correspond une question
+Une question est liée à plusieurs réponses
 
 Prévoir les routes suivantes:
 /question => affichera les liste des questions enregistrées
@@ -28,9 +35,9 @@ Prévoir les routes suivantes:
 /answer
 /answer/add
 /answer/edit/{id}
-/answser/delete/{id}
+/answer/delete/{id}
 
 /category
 /category/add
-/answer/edit/{id}
-/answser/delete/{id}
+/category/edit/{id}
+/category/delete/{id}
